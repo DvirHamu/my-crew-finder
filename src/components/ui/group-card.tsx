@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { InterestTag } from "@/components/ui/interest-tag";
 import { MapPin, Clock, Users, Calendar, Check } from "lucide-react";
 import { useGroups } from "@/contexts/GroupContext";
+import { useNavigate } from "react-router-dom";
 import { toast } from "@/hooks/use-toast";
 
 interface GroupCardProps {
@@ -33,7 +34,16 @@ export function GroupCard({
   onClick
 }: GroupCardProps) {
   const { joinGroup, leaveGroup, isGroupJoined } = useGroups();
+  const navigate = useNavigate();
   const isJoined = isGroupJoined(id);
+
+  const handleCardClick = () => {
+    if (onClick) {
+      onClick();
+    } else {
+      navigate(`/group/${id}`);
+    }
+  };
 
   const handleJoinClick = (e: React.MouseEvent) => {
     e.stopPropagation();
@@ -64,7 +74,7 @@ export function GroupCard({
     }
   };
   return (
-    <Card className="bg-gradient-card shadow-card hover:shadow-hover transition-smooth cursor-pointer border-border hover:border-accent/30" onClick={onClick}>
+    <Card className="bg-gradient-card shadow-card hover:shadow-hover transition-smooth cursor-pointer border-border hover:border-accent/30" onClick={handleCardClick}>
       <CardHeader className="pb-3">
         <div className="flex items-start justify-between gap-3">
           <div className="flex-1">
