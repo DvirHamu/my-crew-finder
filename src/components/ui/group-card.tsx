@@ -1,7 +1,9 @@
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { InterestTag } from "@/components/ui/interest-tag";
-import { MapPin, Clock, Users, Calendar } from "lucide-react";
+import { MapPin, Clock, Users, Calendar, Check } from "lucide-react";
+import { useGroups } from "@/contexts/GroupContext";
+import { toast } from "@/hooks/use-toast";
 
 interface GroupCardProps {
   id: string;
@@ -18,6 +20,7 @@ interface GroupCardProps {
 }
 
 export function GroupCard({
+  id,
   name,
   description,
   tags,
@@ -29,6 +32,37 @@ export function GroupCard({
   isBeginnerFriendly,
   onClick
 }: GroupCardProps) {
+  const { joinGroup, leaveGroup, isGroupJoined } = useGroups();
+  const isJoined = isGroupJoined(id);
+
+  const handleJoinClick = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    
+    if (isJoined) {
+      leaveGroup(id);
+      toast({
+        title: "Left group",
+        description: `You've left ${name}`,
+      });
+    } else {
+      joinGroup({
+        id,
+        name,
+        description,
+        tags,
+        location,
+        schedule,
+        memberCount,
+        nextMeeting,
+        isFree,
+        isBeginnerFriendly
+      });
+      toast({
+        title: "Joined group! 🎉",
+        description: `Welcome to ${name}`,
+      });
+    }
+  };
   return (
     <Card className="bg-gradient-card shadow-card hover:shadow-hover transition-smooth cursor-pointer border-border hover:border-accent/30" onClick={onClick}>
       <CardHeader className="pb-3">
@@ -82,8 +116,19 @@ export function GroupCard({
               </span>
             )}
           </div>
-          <Button size="sm" variant="outline">
-            Join Group
+          <Button 
+            size="sm" 
+            variant={isJoined ? "secondary" : "outline"}
+            onClick={handleJoinClick}
+          >
+            {isJoined ? (
+              <>
+                <Check size={14} />
+                Joined
+              </>
+            ) : (
+              "Join Group"
+            )}
           </Button>
         </div>
       </CardContent>

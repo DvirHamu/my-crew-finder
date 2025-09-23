@@ -57,12 +57,145 @@ const MOCK_GROUPS = [
     nextMeeting: "Jan 31",
     isFree: false,
     isBeginnerFriendly: true
+  },
+  {
+    id: "5",
+    name: "Foodie Adventures",
+    description: "Discover hidden gems and trendy restaurants around the city. Monthly food tours and tastings.",
+    tags: ["Food"],
+    location: "Various restaurants, SF",
+    schedule: "Second Saturday 6:00 PM",
+    memberCount: 78,
+    nextMeeting: "Feb 10",
+    isFree: false,
+    isBeginnerFriendly: true
+  },
+  {
+    id: "6",
+    name: "Spanish Conversation Circle",
+    description: "Practice Spanish with native speakers and learners. All levels from beginner to advanced welcome.",
+    tags: ["Language"],
+    location: "Castro Library",
+    schedule: "Tuesdays 7:00 PM",
+    memberCount: 35,
+    nextMeeting: "Jan 30",
+    isFree: true,
+    isBeginnerFriendly: true
+  },
+  {
+    id: "7",
+    name: "Urban Sketchers SF",
+    description: "Draw and paint the city together. Bring your art supplies and capture San Francisco's beauty.",
+    tags: ["Arts"],
+    location: "Dolores Park",
+    schedule: "Saturdays 10:00 AM",
+    memberCount: 52,
+    nextMeeting: "Jan 27",
+    isFree: true,
+    isBeginnerFriendly: true
+  },
+  {
+    id: "8",
+    name: "CrossFit Beginners",
+    description: "High-intensity functional fitness workouts in a supportive group environment.",
+    tags: ["Fitness"],
+    location: "CrossFit SOMA",
+    schedule: "Mon/Wed/Fri 6:30 AM",
+    memberCount: 24,
+    nextMeeting: "Jan 29",
+    isFree: false,
+    isBeginnerFriendly: true
+  },
+  {
+    id: "9",
+    name: "Indie Music Lovers",
+    description: "Discover new artists, share favorite tracks, and attend local shows together.",
+    tags: ["Music"],
+    location: "The Independent",
+    schedule: "First Friday 8:00 PM",
+    memberCount: 67,
+    nextMeeting: "Feb 2",
+    isFree: false,
+    isBeginnerFriendly: true
+  },
+  {
+    id: "10",
+    name: "Community Garden Volunteers",
+    description: "Help maintain local community gardens while learning about sustainable gardening practices.",
+    tags: ["Volunteering", "Outdoors"],
+    location: "Alemany Farm",
+    schedule: "Saturdays 9:00 AM",
+    memberCount: 43,
+    nextMeeting: "Jan 27",
+    isFree: true,
+    isBeginnerFriendly: true
+  },
+  {
+    id: "11",
+    name: "Young Professionals Network",
+    description: "Networking events for career growth, mentorship, and building professional relationships.",
+    tags: ["Entrepreneurship"],
+    location: "Financial District",
+    schedule: "Third Thursday 6:00 PM",
+    memberCount: 156,
+    nextMeeting: "Feb 15",
+    isFree: false,
+    isBeginnerFriendly: true
+  },
+  {
+    id: "12",
+    name: "Book Club: Modern Fiction",
+    description: "Monthly discussions of contemporary novels. Currently reading literary fiction and debut authors.",
+    tags: ["Reading"],
+    location: "Green Apple Books",
+    schedule: "Last Sunday 3:00 PM",
+    memberCount: 28,
+    nextMeeting: "Jan 28",
+    isFree: true,
+    isBeginnerFriendly: true
+  },
+  {
+    id: "13",
+    name: "Sunday Service & Fellowship",
+    description: "Join us for worship, community service, and building meaningful spiritual connections.",
+    tags: ["Faith"],
+    location: "Grace Cathedral",
+    schedule: "Sundays 11:00 AM",
+    memberCount: 85,
+    nextMeeting: "Jan 28",
+    isFree: true,
+    isBeginnerFriendly: true
+  },
+  {
+    id: "14",
+    name: "Cooking Workshop Series",
+    description: "Learn to cook cuisines from around the world. This month: Italian pasta making!",
+    tags: ["Food", "Cooking"],
+    location: "Community Kitchen",
+    schedule: "Saturdays 2:00 PM",
+    memberCount: 36,
+    nextMeeting: "Feb 3",
+    isFree: false,
+    isBeginnerFriendly: true
+  },
+  {
+    id: "15",
+    name: "Jazz Jam Session",
+    description: "Bring your instrument or just listen. Weekly jazz sessions with local musicians.",
+    tags: ["Music"],
+    location: "The Fillmore",
+    schedule: "Thursdays 8:00 PM",
+    memberCount: 41,
+    nextMeeting: "Feb 1",
+    isFree: true,
+    isBeginnerFriendly: false
   }
 ];
 
 const INTEREST_FILTERS = [
   "All", "Outdoors", "Fitness", "Tech", "Arts", "Music", "Food", 
-  "Board Games", "Photography", "Entrepreneurship"
+  "Board Games", "Photography", "Entrepreneurship", "Language", "Faith",
+  "Volunteering", "Reading", "Cooking"
 ];
 
 export default function Explore() {
