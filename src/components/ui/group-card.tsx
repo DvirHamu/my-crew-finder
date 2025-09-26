@@ -51,8 +51,8 @@ export function GroupCard({
     if (isJoined) {
       leaveGroup(id);
       toast({
-        title: "Left group",
-        description: `You've left ${name}`,
+        title: "Volunteer signup cancelled",
+        description: `You're no longer signed up for ${name}`,
       });
     } else {
       joinGroup({
@@ -68,8 +68,8 @@ export function GroupCard({
         isBeginnerFriendly
       });
       toast({
-        title: "Joined group! 🎉",
-        description: `Welcome to ${name}`,
+        title: "Signed up to volunteer! 🎉",
+        description: `You're now helping with ${name}`,
       });
     }
   };
@@ -112,10 +112,10 @@ export function GroupCard({
             <Calendar size={14} />
             <span>Next: {nextMeeting}</span>
           </div>
-          <div className="flex items-center gap-2">
-            <Users size={14} />
-            <span>{memberCount} members</span>
-          </div>
+            <div className="flex items-center gap-2">
+              <Users size={14} />
+              <span>{memberCount} volunteers</span>
+            </div>
         </div>
         
         <div className="flex items-center justify-between gap-3 pt-2">
@@ -136,9 +136,9 @@ export function GroupCard({
                 <Check size={14} />
                 Joined
               </>
-            ) : (
-              "Join Group"
-            )}
+              ) : (
+                "Volunteer"
+              )}
           </Button>
         </div>
       </CardContent>

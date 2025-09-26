@@ -13,9 +13,9 @@ export function Navigation() {
         <div className="flex items-center justify-between h-16">
           <Link to="/" className="flex items-center space-x-2">
             <div className="w-8 h-8 bg-gradient-hero rounded-lg flex items-center justify-center">
-              <span className="text-primary-foreground font-bold text-lg">C</span>
+              <span className="text-primary-foreground font-bold text-lg">❤️</span>
             </div>
-            <span className="text-xl font-bold text-foreground">CrewFinder</span>
+            <span className="text-xl font-bold text-foreground">Do Good</span>
           </Link>
           
           <div className="hidden md:flex items-center space-x-6">
@@ -33,7 +33,7 @@ export function Navigation() {
                 variant={isActive("/my-groups") ? "default" : "ghost"} 
                 className="font-medium"
               >
-                My Groups
+                My Impact
               </Button>
             </Link>
           </div>

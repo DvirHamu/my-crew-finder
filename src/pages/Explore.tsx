@@ -8,14 +8,14 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Search, Filter, MapPin, Clock, DollarSign } from "lucide-react";
 import { useLocation } from "react-router-dom";
 
-// Mock data - in real app this would come from Supabase
+// Mock volunteer opportunities - in real app this would come from Supabase
 const MOCK_GROUPS = [
   {
     id: "1",
-    name: "SF Hiking Adventures",
-    description: "Explore beautiful trails around the Bay Area every Saturday. All fitness levels welcome!",
-    tags: ["Outdoors", "Fitness"],
-    location: "Various trails, SF Bay Area", 
+    name: "Park Cleanup Heroes",
+    description: "Join us every Saturday to clean and beautify our local parks. Help create green spaces for everyone to enjoy!",
+    tags: ["Environment", "Community Building"],
+    location: "Golden Gate Park, SF", 
     schedule: "Saturdays 9:00 AM",
     memberCount: 127,
     nextMeeting: "Jan 27",
@@ -24,10 +24,10 @@ const MOCK_GROUPS = [
   },
   {
     id: "2", 
-    name: "Tech Startup Founders",
-    description: "Monthly meetup for aspiring and current startup founders. Share experiences, network, and learn.",
-    tags: ["Tech", "Entrepreneurship"],
-    location: "WeWork SOMA, San Francisco",
+    name: "Animal Shelter Support",
+    description: "Help care for rescue animals at the local shelter. Walk dogs, socialize cats, and assist with adoption events.",
+    tags: ["Animals", "Healthcare"],
+    location: "SF SPCA, San Francisco",
     schedule: "First Thursday 7:00 PM", 
     memberCount: 89,
     nextMeeting: "Feb 1",
@@ -36,10 +36,10 @@ const MOCK_GROUPS = [
   },
   {
     id: "3",
-    name: "Photography Walks",
-    description: "Capture the beauty of the city together. Bring your camera and explore new neighborhoods.",
-    tags: ["Photography", "Arts"],
-    location: "Mission District, SF",
+    name: "Youth Art Mentoring",
+    description: "Mentor young artists in after-school programs. Share your creativity and inspire the next generation.",
+    tags: ["Arts & Culture", "Youth Mentoring"],
+    location: "Community Arts Center, SF",
     schedule: "Sundays 2:00 PM",
     memberCount: 64,
     nextMeeting: "Jan 28", 
@@ -48,34 +48,34 @@ const MOCK_GROUPS = [
   },
   {
     id: "4",
-    name: "Board Game Night",
-    description: "Weekly board game sessions at local cafes. From classics to modern strategy games.",
-    tags: ["Board Games"],
-    location: "Mission Cliffs Cafe",
+    name: "Senior Gaming Companions",
+    description: "Bring joy to elderly residents through board games and card games. Combat loneliness with fun!",
+    tags: ["Elderly Care", "Community Building"],
+    location: "Sunset Manor Care Home",
     schedule: "Wednesdays 7:30 PM",
     memberCount: 42,
     nextMeeting: "Jan 31",
-    isFree: false,
+    isFree: true,
     isBeginnerFriendly: true
   },
   {
     id: "5",
-    name: "Foodie Adventures",
-    description: "Discover hidden gems and trendy restaurants around the city. Monthly food tours and tastings.",
-    tags: ["Food"],
-    location: "Various restaurants, SF",
+    name: "Food Bank Distribution",
+    description: "Help pack and distribute food to families in need. Make a direct impact on food insecurity.",
+    tags: ["Food Security", "Community Building"],
+    location: "SF Food Bank",
     schedule: "Second Saturday 6:00 PM",
     memberCount: 78,
     nextMeeting: "Feb 10",
-    isFree: false,
+    isFree: true,
     isBeginnerFriendly: true
   },
   {
     id: "6",
-    name: "Spanish Conversation Circle",
-    description: "Practice Spanish with native speakers and learners. All levels from beginner to advanced welcome.",
-    tags: ["Language"],
-    location: "Castro Library",
+    name: "Homeless Outreach Team",
+    description: "Distribute meals, supplies, and connect homeless individuals with resources and support services.",
+    tags: ["Homeless Support", "Social Justice"],
+    location: "Tenderloin District",
     schedule: "Tuesdays 7:00 PM",
     memberCount: 35,
     nextMeeting: "Jan 30",
@@ -84,10 +84,10 @@ const MOCK_GROUPS = [
   },
   {
     id: "7",
-    name: "Urban Sketchers SF",
-    description: "Draw and paint the city together. Bring your art supplies and capture San Francisco's beauty.",
-    tags: ["Arts"],
-    location: "Dolores Park",
+    name: "Beach Cleanup Warriors",
+    description: "Protect our coastline by removing plastic and debris. Help preserve marine ecosystems.",
+    tags: ["Environment", "Community Building"],
+    location: "Ocean Beach, SF",
     schedule: "Saturdays 10:00 AM",
     memberCount: 52,
     nextMeeting: "Jan 27",
@@ -96,33 +96,33 @@ const MOCK_GROUPS = [
   },
   {
     id: "8",
-    name: "CrossFit Beginners",
-    description: "High-intensity functional fitness workouts in a supportive group environment.",
-    tags: ["Fitness"],
-    location: "CrossFit SOMA",
-    schedule: "Mon/Wed/Fri 6:30 AM",
+    name: "Hospital Reading Volunteers",
+    description: "Bring comfort to patients by reading stories and providing companionship during recovery.",
+    tags: ["Healthcare", "Elderly Care"],
+    location: "UCSF Medical Center",
+    schedule: "Mon/Wed/Fri 6:30 PM",
     memberCount: 24,
     nextMeeting: "Jan 29",
-    isFree: false,
+    isFree: true,
     isBeginnerFriendly: true
   },
   {
     id: "9",
-    name: "Indie Music Lovers",
-    description: "Discover new artists, share favorite tracks, and attend local shows together.",
-    tags: ["Music"],
-    location: "The Independent",
+    name: "Coding for Nonprofits",
+    description: "Use your tech skills to build websites and apps for local nonprofits and social causes.",
+    tags: ["Tech for Good", "Education"],
+    location: "Code for SF Meetup",
     schedule: "First Friday 8:00 PM",
     memberCount: 67,
     nextMeeting: "Feb 2",
-    isFree: false,
+    isFree: true,
     isBeginnerFriendly: true
   },
   {
     id: "10",
-    name: "Community Garden Volunteers",
-    description: "Help maintain local community gardens while learning about sustainable gardening practices.",
-    tags: ["Volunteering", "Outdoors"],
+    name: "Community Garden Collective",
+    description: "Grow fresh produce for local food banks while learning sustainable gardening practices.",
+    tags: ["Environment", "Food Security"],
     location: "Alemany Farm",
     schedule: "Saturdays 9:00 AM",
     memberCount: 43,
@@ -132,22 +132,22 @@ const MOCK_GROUPS = [
   },
   {
     id: "11",
-    name: "Young Professionals Network",
-    description: "Networking events for career growth, mentorship, and building professional relationships.",
-    tags: ["Entrepreneurship"],
-    location: "Financial District",
+    name: "Disaster Relief Training",
+    description: "Get certified in emergency response and help communities prepare for and recover from disasters.",
+    tags: ["Disaster Relief", "Community Building"],
+    location: "Red Cross Training Center",
     schedule: "Third Thursday 6:00 PM",
     memberCount: 156,
     nextMeeting: "Feb 15",
-    isFree: false,
+    isFree: true,
     isBeginnerFriendly: true
   },
   {
     id: "12",
-    name: "Book Club: Modern Fiction",
-    description: "Monthly discussions of contemporary novels. Currently reading literary fiction and debut authors.",
-    tags: ["Reading"],
-    location: "Green Apple Books",
+    name: "Adult Literacy Tutors",
+    description: "Help adults improve their reading and writing skills. Make education accessible for everyone.",
+    tags: ["Education", "Social Justice"],
+    location: "Public Library Branch",
     schedule: "Last Sunday 3:00 PM",
     memberCount: 28,
     nextMeeting: "Jan 28",
@@ -156,10 +156,10 @@ const MOCK_GROUPS = [
   },
   {
     id: "13",
-    name: "Sunday Service & Fellowship",
-    description: "Join us for worship, community service, and building meaningful spiritual connections.",
-    tags: ["Faith"],
-    location: "Grace Cathedral",
+    name: "Community Sports Coaches",
+    description: "Coach youth sports teams and teach kids the value of teamwork and healthy living.",
+    tags: ["Sports & Recreation", "Youth Mentoring"],
+    location: "Local Recreation Center",
     schedule: "Sundays 11:00 AM",
     memberCount: 85,
     nextMeeting: "Jan 28",
@@ -168,34 +168,34 @@ const MOCK_GROUPS = [
   },
   {
     id: "14",
-    name: "Cooking Workshop Series",
-    description: "Learn to cook cuisines from around the world. This month: Italian pasta making!",
-    tags: ["Food", "Cooking"],
-    location: "Community Kitchen",
+    name: "Refugee Resettlement Support",
+    description: "Welcome new Americans by helping with housing, job searches, and cultural integration.",
+    tags: ["Social Justice", "Community Building"],
+    location: "International Rescue Committee",
     schedule: "Saturdays 2:00 PM",
     memberCount: 36,
     nextMeeting: "Feb 3",
-    isFree: false,
+    isFree: true,
     isBeginnerFriendly: true
   },
   {
     id: "15",
-    name: "Jazz Jam Session",
-    description: "Bring your instrument or just listen. Weekly jazz sessions with local musicians.",
-    tags: ["Music"],
-    location: "The Fillmore",
+    name: "Veterans Support Network",
+    description: "Provide companionship and assistance to veterans in need. Honor those who served.",
+    tags: ["Healthcare", "Community Building"],
+    location: "VA Medical Center",
     schedule: "Thursdays 8:00 PM",
     memberCount: 41,
     nextMeeting: "Feb 1",
     isFree: true,
-    isBeginnerFriendly: false
+    isBeginnerFriendly: true
   }
 ];
 
-const INTEREST_FILTERS = [
-  "All", "Outdoors", "Fitness", "Tech", "Arts", "Music", "Food", 
-  "Board Games", "Photography", "Entrepreneurship", "Language", "Faith",
-  "Volunteering", "Reading", "Cooking"
+const CAUSE_FILTERS = [
+  "All", "Environment", "Animals", "Education", "Healthcare", "Elderly Care", "Homeless Support", 
+  "Food Security", "Community Building", "Youth Mentoring", "Disaster Relief", "Arts & Culture", 
+  "Sports & Recreation", "Tech for Good", "Social Justice"
 ];
 
 export default function Explore() {
@@ -243,10 +243,10 @@ export default function Explore() {
             <span>{city}</span>
           </div>
           <h1 className="text-3xl font-bold text-foreground">
-            Discover Local Groups
+            Volunteer Opportunities
           </h1>
           <p className="text-muted-foreground mt-1">
-            Found {filteredGroups.length} groups matching your interests
+            Found {filteredGroups.length} volunteer opportunities matching your causes
           </p>
         </div>
 
@@ -257,7 +257,7 @@ export default function Explore() {
               <div className="flex-1 relative">
                 <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground" size={20} />
                 <Input
-                  placeholder="Search groups, activities, or keywords..."
+                  placeholder="Search volunteer opportunities, causes, or keywords..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                   className="pl-10 h-12"
@@ -276,9 +276,9 @@ export default function Explore() {
             
             {/* Interest Tags */}
             <div className="mt-6">
-              <p className="text-sm font-medium text-foreground mb-3">Filter by Interest</p>
+              <p className="text-sm font-medium text-foreground mb-3">Filter by Cause</p>
               <div className="flex flex-wrap gap-2">
-                {INTEREST_FILTERS.map((interest) => (
+                {CAUSE_FILTERS.map((interest) => (
                   <InterestTag
                     key={interest}
                     label={interest}
@@ -334,7 +334,7 @@ export default function Explore() {
         
         {filteredGroups.length === 0 && (
           <div className="text-center py-12">
-            <p className="text-muted-foreground text-lg">No groups found matching your criteria.</p>
+            <p className="text-muted-foreground text-lg">No volunteer opportunities found matching your criteria.</p>
             <p className="text-sm text-muted-foreground mt-2">Try adjusting your filters or search terms.</p>
           </div>
         )}

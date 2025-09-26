@@ -7,10 +7,10 @@ import { MapPin, ArrowRight, Users, Search, Calendar } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import heroImage from "@/assets/hero-community.jpg";
 
-const INTEREST_CATEGORIES = [
-  "Outdoors", "Fitness", "Tech", "Arts", "Music", "Food", 
-  "Language", "Faith", "Volunteering", "Entrepreneurship", 
-  "Board Games", "Photography", "Reading", "Cooking"
+const VOLUNTEER_CATEGORIES = [
+  "Environment", "Animals", "Education", "Healthcare", "Elderly Care", "Homeless Support", 
+  "Food Security", "Community Building", "Youth Mentoring", "Disaster Relief", 
+  "Arts & Culture", "Sports & Recreation", "Tech for Good", "Social Justice"
 ];
 
 const POPULAR_CITIES = [
@@ -58,20 +58,20 @@ export default function Landing() {
         {/* Hero Section */}
         <div className="text-center mb-12">
           <h1 className="text-4xl sm:text-6xl font-bold text-primary-foreground mb-6 leading-tight">
-            Find Your
+            Make a Difference,
             <span className="block bg-gradient-accent bg-clip-text text-transparent">
-              Perfect Crew
+              Do Good
             </span>
           </h1>
           <p className="text-xl text-primary-foreground/90 mb-8 max-w-2xl mx-auto">
-            Discover amazing local clubs, recurring meetups, and communities for young adults. 
-            Make real connections in your city.
+            Join volunteer opportunities, earn badges & achievements, and track your positive impact. 
+            Connect with fellow do-gooders in your community.
           </p>
           
           <div className="flex items-center justify-center gap-6 text-primary-foreground/80 text-sm">
             <div className="flex items-center gap-2">
               <Users size={16} />
-              <span>10,000+ Groups</span>
+              <span>5,000+ Volunteers</span>
             </div>
             <div className="flex items-center gap-2">
               <MapPin size={16} />
@@ -79,7 +79,7 @@ export default function Landing() {
             </div>
             <div className="flex items-center gap-2">
               <Calendar size={16} />
-              <span>Weekly Meetups</span>
+              <span>Weekly Events</span>
             </div>
           </div>
         </div>
@@ -128,15 +128,15 @@ export default function Landing() {
             <CardHeader>
               <CardTitle className="flex items-center gap-2 text-foreground">
                 <Search className="w-5 h-5 text-primary" />
-                Pick Your Interests
+                Choose Your Causes
               </CardTitle>
               <p className="text-sm text-muted-foreground">
-                Select at least 3 to get personalized recommendations
+                Select areas you're passionate about helping
               </p>
             </CardHeader>
             <CardContent>
               <div className="flex flex-wrap gap-2">
-                {INTEREST_CATEGORIES.map((interest) => (
+                {VOLUNTEER_CATEGORIES.map((interest) => (
                   <InterestTag
                     key={interest}
                     label={interest}
@@ -158,13 +158,13 @@ export default function Landing() {
             disabled={!isComplete}
             className="px-12"
           >
-            Find My Crews
+            Start Doing Good
             <ArrowRight className="w-5 h-5" />
           </Button>
           
           {!isComplete && (
             <p className="text-primary-foreground/70 text-sm mt-3">
-              Select a city and interests to continue
+              Select a city and causes to continue
             </p>
           )}
         </div>
